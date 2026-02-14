@@ -42,15 +42,15 @@ const CONFIG = {
     // Love meter messages
     // They show up depending on how far they slide the meter
     loveMessages: {
-        extreme: "Да ну, прям НАСТОЛЬКО что-ли?? 💝",  // Shows when they go past 5000%
-        high: "Я удвивлен!! 🚀",              // Shows when they go past 1000%
-        normal: "Бесконечность, не предел 🥰"                           // Shows when they go past 100%
+        extreme: "Ну явно не наныл, сама столько выбираешь!!💝",  // Shows when they go past 5000%
+        high: "А может больше?🚀",              // Shows when they go past 1000%
+        normal: "Маловато конечно,  но ладно..."                           // Shows when they go past 100%
     },
 
     // Messages that appear after they say "Yes!"
     celebration: {
-        title: "юпио! 🎉💓",
-        message: "твой подарок, это +1 месяц дружбы со мной!! ",
+        title: "юпио! 🎉",
+        message: "твой подарок на дня валентина, это +1 месяц дружбы со мной! ",
         emojis: "🎁💖🤗💝❤️💕"  // These will bounce around
     },
 
