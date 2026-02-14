@@ -149,34 +149,42 @@ function celebrate() {
     
     document.getElementById('celebrationTitle').textContent = config.celebration.title;
     document.getElementById('celebrationMessage').textContent = config.celebration.message;
-    
     const emojiContainer = document.getElementById('celebrationEmojis');
     if (emojiContainer) {
         const links = config.celebration.emojis.split(',').map(link => link.trim());
         
         emojiContainer.innerHTML = '';
-        // Исправлено: photosWrapper пишется слитно
         const photosWrapper = document.createElement('div'); 
         photosWrapper.style.cssText = 'display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px;';
         
         links.forEach(url => {
-            if (url.length > 5) {
+            if (url.length > 5) { // Проверяем, что ссылка не пустая
                 const img = document.createElement('img');
                 img.src = url;
-                img.style.cssText = 'width: 100px; height: 100px; object-fit: cover; border-radius: 15px; border: 3px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.3s;';
+                img.style.cssText = `
+                    width: 250px;
+                    height: 350px;
+                    object-fit: cover;
+                    border-radius: 20px;
+                    border: 5px solid #fff;
+                    box-shadow: 0 10px 20px rgba(0,0,0,0.15); 
+                    transition: transform 0.3s;
+                    margin: 10px;
+                `;
+
+                img.onmouseover = () => img.style.transform = 'scale(1.05) rotate(2deg)';
+                img.onmouseout = () => img.style.transform = 'scale(1.0) rotate(0deg)';
                 
-                img.onmouseover = () => img.style.transform = 'scale(1.1)';
-                img.onmouseout = () => img.style.transform = 'scale(1.0)';
-                
+                // ВАЖНО: Добавляем картинку в обертку
                 photosWrapper.appendChild(img);
             }
         });
         
+        // Добавляем обертку в контейнер на странице
         emojiContainer.appendChild(photosWrapper);
     }
     
     createHeartExplosion();
-}
 
 function createHeartExplosion() {
     const container = document.querySelector('.floating-elements');
