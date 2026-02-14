@@ -142,23 +142,32 @@ window.addEventListener('DOMContentLoaded', setInitialPosition);
 window.addEventListener('load', setInitialPosition);
 
 function celebrate() {
+    // 1. Прячем все секции с вопросами
     document.querySelectorAll('.question-section').forEach(q => q.classList.add('hidden'));
     
+    // 2. Показываем финальную секцию
     const celebration = document.getElementById('celebration');
-    if (celebration) celebration.classList.remove('hidden');
+    if (celebration) {
+        celebration.classList.remove('hidden');
+    }
+
+    // 3. Заполняем тексты из конфига
+    const titleEl = document.getElementById('celebrationTitle');
+    const msgEl = document.getElementById('celebrationMessage');
+    if (titleEl) titleEl.textContent = config.celebration.title;
+    if (msgEl) msgEl.textContent = config.celebration.message;
     
-    document.getElementById('celebrationTitle').textContent = config.celebration.title;
-    document.getElementById('celebrationMessage').textContent = config.celebration.message;
+    // 4. Логика больших фотографий
     const emojiContainer = document.getElementById('celebrationEmojis');
     if (emojiContainer) {
         const links = config.celebration.emojis.split(',').map(link => link.trim());
         
-        emojiContainer.innerHTML = '';
+        emojiContainer.innerHTML = ''; // Очищаем от старых эмодзи
         const photosWrapper = document.createElement('div'); 
         photosWrapper.style.cssText = 'display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px;';
         
         links.forEach(url => {
-            if (url.length > 5) { // Проверяем, что ссылка не пустая
+            if (url.length > 5) {
                 const img = document.createElement('img');
                 img.src = url;
                 img.style.cssText = `
@@ -175,17 +184,18 @@ function celebrate() {
                 img.onmouseover = () => img.style.transform = 'scale(1.05) rotate(2deg)';
                 img.onmouseout = () => img.style.transform = 'scale(1.0) rotate(0deg)';
                 
-                // ВАЖНО: Добавляем картинку в обертку
                 photosWrapper.appendChild(img);
             }
         });
         
-        // Добавляем обертку в контейнер на странице
         emojiContainer.appendChild(photosWrapper);
     }
     
-    createHeartExplosion();
-
+    // 5. Запускаем эффект сердечек
+    if (typeof createHeartExplosion === "function") {
+        createHeartExplosion();
+    }
+} // <--- Вот эта скобка закрывает саму функцию celebrate
 function createHeartExplosion() {
     const container = document.querySelector('.floating-elements');
     if (!container) return;
