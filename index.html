@@ -63,12 +63,28 @@
 
         <!-- CUSTOMIZE: Celebration message -->
         <div class="celebration hidden" id="celebration">
-            <h2 id="celebrationTitle"></h2>
-            <p class="celebration-text" id="celebrationMessage"></p>
-            <p class="celebration-text" id="celebrationEmojis"></p>
+            <h2 id="celebrationTitle" style="font-family: 'Dancing Script', cursive; font-size: 3rem;"></h2>
+            
+            <div class="final-card" style="
+                background: rgba(255, 255, 255, 0.8);
+                backdrop-filter: blur(10px);
+                border-radius: 20px;
+                padding: 25px;
+                margin: 20px auto;
+                max-width: 90%;
+                border: 2px solid #ffb6c1;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                color: #4a4a4a;
+                line-height: 1.6;
+            ">
+                <p id="celebrationMessage" style="font-size: 1.2rem; margin-bottom: 15px;"></p>
+                <p id="celebrationEmojis" style="font-size: 2rem;"></p>
+                
+                <div style="margin-top: 20px; border-top: 1px dashed #ffb6c1; padding-top: 15px; font-weight: bold; color: #ff69b4;">
+                    Тут можно добавить подпись: "Навсегда твой, (Имя)"
+                </div>
+            </div>
         </div>
-    </div>
-
     <!-- Scripts -->
     <script src="config.js"></script>
     <script src="theme.js"></script>
