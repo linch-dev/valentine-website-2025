@@ -41,7 +41,7 @@ function createFloatingElements() {
     if (!container) return;
 
     const skzPhotos = [
-        'https://i.pinimg.com/736x/1e/84/bd/1e84bd5910a96bda226dceaf613de813.jpg',
+        'https://ibb.co.com/RpTGYs5z',
         'https://ih1.redbubble.net/image.1127885203.3563/raf,360x360,075,t,fafafa:ca443f4786.jpg',
         'https://i.pinimg.com/736x/17/63/38/1763389ca89c30e461fe4291ed19a3d2.jpg'
     ];
