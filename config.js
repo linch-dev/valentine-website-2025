@@ -5,11 +5,11 @@
 const CONFIG = {
     // Your Valentine's name that will appear in the title
     // Example: "Jade", "Sarah", "Mike"
-    valentineName: "Jade",
+    valentineName: "Катя",
 
     // The title that appears in the browser tab
     // You can use emojis! 💝 💖 💗 💓 💞 💕
-    pageTitle: "Will You Be My Valentine? 💝",
+    pageTitle: "Валентинка лучшей Аричке 💝",
 
     // Floating emojis that appear in the background
     // Find more emojis at: https://emojipedia.org
@@ -22,36 +22,36 @@ const CONFIG = {
     // Customize each question and its possible responses
     questions: {
         first: {
-            text: "Do you like me?",                                    // First interaction
-            yesBtn: "Yes",                                             // Text for "Yes" button
-            noBtn: "No",                                               // Text for "No" button
-            secretAnswer: "I don't like you, I love you! ❤️"           // Secret hover message
+            text: "Ценишь нашу дружбу?",                                    // First interaction
+            yesBtn: "Да!",                                             // Text for "Yes" button
+            noBtn: "Нет...",                                               // Text for "No" button
+            secretAnswer: "я не ценю, я ею безумно дорожу!❤️"           // Secret hover message
         },
         second: {
-            text: "How much do you love me?",                          // For the love meter
-            startText: "This much!",                                   // Text before the percentage
-            nextBtn: "Next ❤️"                                         // Text for the next button
+            text: "Насколько сильно ты ценишь меня?",                          // For the love meter
+            startText: "Вот на столько!",                                   // Text before the percentage
+            nextBtn: "Продолжить..."                                         // Text for the next button
         },
         third: {
-            text: "Will you be my Valentine on February 14th, 2025? 🌹", // The big question!
-            yesBtn: "Yes!",                                             // Text for "Yes" button
-            noBtn: "No"                                                 // Text for "No" button
+            text: "Ну, твоим валентином я не буду, но, будешь ли ты моей лучшей подругой?🌹", // The big question!
+            yesBtn: "Да!",                                             // Text for "Yes" button
+            noBtn: "Нет."                                                 // Text for "No" button
         }
     },
 
     // Love meter messages
     // They show up depending on how far they slide the meter
     loveMessages: {
-        extreme: "WOOOOW You love me that much?? 🥰🚀💝",  // Shows when they go past 5000%
-        high: "To infinity and beyond! 🚀💝",              // Shows when they go past 1000%
-        normal: "And beyond! 🥰"                           // Shows when they go past 100%
+        extreme: "Да ну, прям НАСТОЛЬКО что-ли?? 💝",  // Shows when they go past 5000%
+        high: "Я удвивлен!! 🚀",              // Shows when they go past 1000%
+        normal: "Бесконечность, не предел 🥰"                           // Shows when they go past 100%
     },
 
     // Messages that appear after they say "Yes!"
     celebration: {
-        title: "Yay! I'm the luckiest person in the world! 🎉💝💖💝💓",
-        message: "Now come get your gift, a big warm hug and a huge kiss!",
-        emojis: "🎁💖🤗💝💋❤️💕"  // These will bounce around
+        title: "юпио! 🎉💓",
+        message: "твой подарок, это +1 месяц дружбы со мной!! ",
+        emojis: "🎁💖🤗💝❤️💕"  // These will bounce around
     },
 
     // Color scheme for the website
@@ -78,9 +78,9 @@ const CONFIG = {
     music: {
         enabled: true,                     // Music feature is enabled
         autoplay: true,                    // Try to autoplay (note: some browsers may block this)
-        musicUrl: "https://res.cloudinary.com/dncywqfpb/video/upload/v1738399057/music_qrhjvy.mp3", // Music streaming URL
-        startText: "🎵 Play Music",        // Button text to start music
-        stopText: "🔇 Stop Music",         // Button text to stop music
+        musicUrl: "https://www.youtube.com/watch?v=l6BgK9EFquE", // Music streaming URL
+        startText: "🎵 Включить музычку(твоя любимая)",        // Button text to start music
+        stopText: "🔇 Остановить музыку",         // Button text to stop music
         volume: 0.5                        // Volume level (0.0 to 1.0)
     }
 };
