@@ -41,9 +41,9 @@ function createFloatingElements() {
     if (!container) return;
 
     const skzPhotos = [
-        'https://ibb.co.com/RpTGYs5z',
-        'https://ih1.redbubble.net/image.1127885203.3563/raf,360x360,075,t,fafafa:ca443f4786.jpg',
-        'https://i.pinimg.com/736x/17/63/38/1763389ca89c30e461fe4291ed19a3d2.jpg'
+        'https://i.pinimg.com/736x/3f/b8/f1/3fb8f17dcd23531f2a3145e84d86e141.jpg',
+        'https://i.pinimg.com/736x/15/ef/07/15ef0766a5687b1d4603373ef5b5f96e.jpg',
+        'https://i.pinimg.com/736x/76/85/98/7685989a734bd4decf54915ef80a1c50.jpg'
     ];
 
     skzPhotos.forEach(photoUrl => {
