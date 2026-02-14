@@ -85,6 +85,7 @@ function moveButton(button) {
     button.style.top = y + 'px';
 }
 
+// --- Блок Шкалы Любви (Love Meter) ---
 const loveMeter = document.getElementById('loveMeter');
 const loveValue = document.getElementById('loveValue');
 const extraLove = document.getElementById('extraLove');
@@ -93,6 +94,7 @@ function setInitialPosition() {
     if (loveMeter && loveValue) {
         loveMeter.value = 100;
         loveValue.textContent = 100;
+        loveMeter.style.width = '100%';
     }
 }
 
@@ -104,33 +106,40 @@ if (loveMeter) {
         if (value > 100) {
             if (extraLove) {
                 extraLove.classList.remove('hidden');
-                // Выбираем сообщение из конфига
-                extraLove.textContent = value >= 5000 ? config.loveMessages.extreme : (value > 1000 ? config.loveMessages.high : config.loveMessages.normal);
+                
+                // Твоя логика сообщений
+                if (value >= 5000) {
+                    extraLove.classList.add('super-love');
+                    extraLove.textContent = config.loveMessages.extreme;
+                } else if (value > 1000) {
+                    extraLove.classList.remove('super-love');
+                    extraLove.textContent = config.loveMessages.high;
+                } else {
+                    extraLove.classList.remove('super-love');
+                    extraLove.textContent = config.loveMessages.normal;
+                }
             }
 
-            // --- ВОТ ТУТ МАГИЯ ВЫХОДА ЗА РАМКИ ---
-            // Считаем, насколько полоска должна стать шире экрана
-            const overflowPercentage = (value - 100) / 9900; 
+            // ТВОЯ ОРИГИНАЛЬНАЯ ЛОГИКА РАСШИРЕНИЯ ПОЛОСКИ
+            const overflowPercentage = (value - 100) / 9900;
             const extraWidth = overflowPercentage * window.innerWidth * 0.8;
-            
-            // Применяем расширение
             loveMeter.style.width = `calc(100% + ${extraWidth}px)`;
             loveMeter.style.transition = 'width 0.3s';
-            // --------------------------------------
-
-            if (value >= 5000 && extraLove) {
-                extraLove.classList.add('super-love');
-            }
+            
         } else {
+            // Возвращаем всё в норму, если значение <= 100
             if (extraLove) {
                 extraLove.classList.add('hidden');
                 extraLove.classList.remove('super-love');
             }
-            // Возвращаем в границы таблички, если значение <= 100
             loveMeter.style.width = '100%';
         }
     });
 }
+
+// Запуск инициализации
+window.addEventListener('DOMContentLoaded', setInitialPosition);
+window.addEventListener('load', setInitialPosition);
 
 function celebrate() {
     document.querySelectorAll('.question-section').forEach(q => q.classList.add('hidden'));
@@ -177,6 +186,16 @@ function setupMusicPlayer() {
         }
     };
 
+if (config.music.autoplay) {
+        const playPromise = bgMusic.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                console.log("Autoplay prevented by browser");
+                musicToggle.textContent = config.music.startText;
+            });
+        }
+    }
+    
     // 3. Устанавливаем начальный текст (сразу при загрузке)
     updateButtonText();
 
