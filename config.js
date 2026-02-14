@@ -78,7 +78,7 @@ const CONFIG = {
     music: {
         enabled: true,                     // Music feature is enabled
         autoplay: true,                    // Try to autoplay (note: some browsers may block this)
-        musicUrl: "https://www.youtube.com/watch?v=l6BgK9EFquE", // Music streaming URL
+        musicUrl: "https://res.cloudinary.com/dap09r38d/video/upload/v1771037661/Stray_Kids_LEE_KNOW_CHANGBIN_FELIX_-_Surfin_%D0%9F%D0%95%D0%A0%D0%95%D0%92%D0%9E%D0%94_%D0%9D%D0%90_%D0%A0%D0%A3%D0%A1%D0%A1%D0%9A%D0%98%D0%99_%D0%9A%D0%98%D0%A0%D0%98%D0%9B%D0%9B%D0%98%D0%97%D0%90%D0%A6%D0%98%D0%AF_1_a1fos9.mp4", // Music streaming URL
         startText: "🎵 Включить музычку(твоя любимая)",        // Button text to start music
         stopText: "🔇 Остановить музыку",         // Button text to stop music
         volume: 0.5                        // Volume level (0.0 to 1.0)
