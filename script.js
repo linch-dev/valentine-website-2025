@@ -41,7 +41,7 @@ function createFloatingElements() {
     if (!container) return;
 
     const skzPhotos = [
-        'https://i.pinimg.com/originals/de/81/25/de8125866b8b08709e9921e537651086.png',
+        'https://i.pinimg.com/736x/aa/58/34/aa5834ed33ef64acd0f97fff1d57a551.jpg',
         'https://i.pinimg.com/originals/6d/4e/6a/6d4e6a00508b5f3a5f97b6671048039d.png',
         'https://i.pinimg.com/originals/5c/7e/63/5c7e634e004683058867a91673855598.png'
     ];
