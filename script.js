@@ -85,19 +85,27 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // Create floating hearts and bears
+// Создание летающих элементов (теперь с Stray Kids!)
 function createFloatingElements() {
     const container = document.querySelector('.floating-elements');
     
-    // Create hearts
-    config.floatingEmojis.hearts.forEach(heart => {
+    // Ссылки на фото Stray Kids (замени их на реальные ссылки на PNG/JPG)
+    const skzPhotos = [
+        'https://i.pinimg.com/originals/de/81/25/de8125866b8b08709e9921e537651086.png', // Пример Феликс
+        'https://i.pinimg.com/originals/6d/4e/6a/6d4e6a00508b5f3a5f97b6671048039d.png', // Пример Хёнджин
+        'https://i.pinimg.com/originals/5c/7e/63/5c7e634e004683058867a91673855598.png'  // Пример Бан Чан
+    ];
+
+    // Создаем элементы на основе фото вместо сердечек
+    skzPhotos.forEach(photoUrl => {
         const div = document.createElement('div');
-        div.className = 'heart';
-        div.innerHTML = heart;
+        div.className = 'heart'; // Оставляем класс heart, чтобы работала CSS анимация
+        div.innerHTML = `<img src="${photoUrl}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%; border: 2px solid white;">`;
         setRandomPosition(div);
         container.appendChild(div);
     });
 
-    // Create bears
+    // Оставляем медведей из конфига, если хочешь
     config.floatingEmojis.bears.forEach(bear => {
         const div = document.createElement('div');
         div.className = 'bear';
@@ -105,6 +113,7 @@ function createFloatingElements() {
         setRandomPosition(div);
         container.appendChild(div);
     });
+}
 }
 
 // Set random position for floating elements
