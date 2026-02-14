@@ -41,8 +41,8 @@ function createFloatingElements() {
     if (!container) return;
 
     const skzPhotos = [
-        'https://i.pinimg.com/736x/aa/58/34/aa5834ed33ef64acd0f97fff1d57a551.jpg',
-        'https://i.pinimg.com/1200x/91/32/eb/9132ebf520908f1f6d8283b571349e4e.jpg',
+        'https://i.pinimg.com/736x/1e/84/bd/1e84bd5910a96bda226dceaf613de813.jpg',
+        'https://ih1.redbubble.net/image.1127885203.3563/raf,360x360,075,t,fafafa:ca443f4786.jpg',
         'https://i.pinimg.com/736x/17/63/38/1763389ca89c30e461fe4291ed19a3d2.jpg'
     ];
 
