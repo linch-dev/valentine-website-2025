@@ -163,22 +163,38 @@ function setupMusicPlayer() {
 
     if (!config.music.enabled || !musicToggle || !bgMusic) return;
 
-    // --- ВОТ ЭТА СТРОЧКА ИСПРАВЛЯЕТ ПРОБЛЕМУ ---
-    // Устанавливаем текст из конфига сразу при загрузке
-    musicToggle.textContent = config.music.autoplay ? config.music.stopText : config.music.startText;
-    // ------------------------------------------
-
+    // 1. Устанавливаем источник и громкость
     if (musicSource) musicSource.src = config.music.musicUrl;
     bgMusic.volume = config.music.volume || 0.5;
     bgMusic.load();
 
+    // 2. Функция, которая правильно ставит текст в зависимости от состояния
+    const updateButtonText = () => {
+        if (bgMusic.paused) {
+            musicToggle.textContent = config.music.startText;
+        } else {
+            musicToggle.textContent = config.music.stopText;
+        }
+    };
+
+    // 3. Устанавливаем начальный текст (сразу при загрузке)
+    updateButtonText();
+
+    // 4. Логика клика
     musicToggle.addEventListener('click', () => {
         if (bgMusic.paused) {
-            bgMusic.play();
-            musicToggle.textContent = config.music.stopText;
+            bgMusic.play().then(() => {
+                updateButtonText();
+            }).catch(error => {
+                console.log("Ошибка воспроизведения:", error);
+            });
         } else {
             bgMusic.pause();
-            musicToggle.textContent = config.music.startText;
+            updateButtonText();
         }
     });
+
+    // 5. На случай, если браузер сам поставит на паузу или запустит
+    bgMusic.onplay = updateButtonText;
+    bgMusic.onpause = updateButtonText;
 }
