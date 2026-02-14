@@ -142,34 +142,29 @@ window.addEventListener('DOMContentLoaded', setInitialPosition);
 window.addEventListener('load', setInitialPosition);
 
 function celebrate() {
-    // Скрываем все вопросы
     document.querySelectorAll('.question-section').forEach(q => q.classList.add('hidden'));
     
     const celebration = document.getElementById('celebration');
-    celebration.classList.remove('hidden');
+    if (celebration) celebration.classList.remove('hidden');
     
-    // Устанавливаем заголовок и текст сообщения
     document.getElementById('celebrationTitle').textContent = config.celebration.title;
     document.getElementById('celebrationMessage').textContent = config.celebration.message;
     
-    // Работаем с фотографиями вместо эмодзи
     const emojiContainer = document.getElementById('celebrationEmojis');
     if (emojiContainer) {
-        // Разделяем строку ссылок на массив
         const links = config.celebration.emojis.split(',').map(link => link.trim());
         
-        // Очищаем контейнер и создаем сетку для фото
         emojiContainer.innerHTML = '';
-        const photos Wrapper = document.createElement('div');
+        // Исправлено: photosWrapper пишется слитно
+        const photosWrapper = document.createElement('div'); 
         photosWrapper.style.cssText = 'display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px;';
         
         links.forEach(url => {
-            if (url.length > 5) { // Простая проверка, что это ссылка
+            if (url.length > 5) {
                 const img = document.createElement('img');
                 img.src = url;
                 img.style.cssText = 'width: 100px; height: 100px; object-fit: cover; border-radius: 15px; border: 3px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.3s;';
                 
-                // Эффект увеличения при наведении (по желанию)
                 img.onmouseover = () => img.style.transform = 'scale(1.1)';
                 img.onmouseout = () => img.style.transform = 'scale(1.0)';
                 
@@ -180,7 +175,6 @@ function celebrate() {
         emojiContainer.appendChild(photosWrapper);
     }
     
-    // Запускаем взрыв сердечек (или фото) в конце
     createHeartExplosion();
 }
 
