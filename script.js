@@ -177,43 +177,44 @@ function setupMusicPlayer() {
     bgMusic.volume = config.music.volume || 0.5;
     bgMusic.load();
 
-    // 2. Функция, которая правильно ставит текст в зависимости от состояния
     const updateButtonText = () => {
-        if (bgMusic.paused) {
-            musicToggle.textContent = config.music.startText;
-        } else {
-            musicToggle.textContent = config.music.stopText;
-        }
+        musicToggle.textContent = bgMusic.paused ? config.music.startText : config.music.stopText;
     };
 
-if (config.music.autoplay) {
-        const playPromise = bgMusic.play();
-        if (playPromise !== undefined) {
-            playPromise.catch(error => {
-                console.log("Autoplay prevented by browser");
-                musicToggle.textContent = config.music.startText;
-            });
-        }
-    }
-    
-    // 3. Устанавливаем начальный текст (сразу при загрузке)
-    updateButtonText();
-
-    // 4. Логика клика
-    musicToggle.addEventListener('click', () => {
-        if (bgMusic.paused) {
+    // 2. Пытаемся запустить автоплей сразу
+    if (config.music.autoplay) {
+        const startPlay = () => {
             bgMusic.play().then(() => {
                 updateButtonText();
+                // Если заиграло, убираем слушатели, чтобы не перезапускать музыку при каждом клике
+                document.removeEventListener('click', startPlay);
+                document.removeEventListener('touchstart', startPlay);
             }).catch(error => {
-                console.log("Ошибка воспроизведения:", error);
+                console.log("Ждем первого взаимодействия для запуска звука...");
             });
+        };
+
+        // Пытаемся запустить немедленно
+        startPlay();
+
+        // Если не вышло (заблокировал браузер), запускаем при первом же клике по экрану
+        document.addEventListener('click', startPlay);
+        document.addEventListener('touchstart', startPlay);
+    }
+
+    updateButtonText();
+
+    // 3. Логика кнопки
+    musicToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // Чтобы не срабатывал слушатель на весь документ
+        if (bgMusic.paused) {
+            bgMusic.play().then(updateButtonText);
         } else {
             bgMusic.pause();
             updateButtonText();
         }
     });
 
-    // 5. На случай, если браузер сам поставит на паузу или запустит
     bgMusic.onplay = updateButtonText;
     bgMusic.onpause = updateButtonText;
 }
