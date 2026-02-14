@@ -160,9 +160,18 @@ function setupMusicPlayer() {
     const musicToggle = document.getElementById('musicToggle');
     const bgMusic = document.getElementById('bgMusic');
     const musicSource = document.getElementById('musicSource');
+
     if (!config.music.enabled || !musicToggle || !bgMusic) return;
+
+    // --- ВОТ ЭТА СТРОЧКА ИСПРАВЛЯЕТ ПРОБЛЕМУ ---
+    // Устанавливаем текст из конфига сразу при загрузке
+    musicToggle.textContent = config.music.autoplay ? config.music.stopText : config.music.startText;
+    // ------------------------------------------
+
     if (musicSource) musicSource.src = config.music.musicUrl;
+    bgMusic.volume = config.music.volume || 0.5;
     bgMusic.load();
+
     musicToggle.addEventListener('click', () => {
         if (bgMusic.paused) {
             bgMusic.play();
