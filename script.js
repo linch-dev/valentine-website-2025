@@ -100,11 +100,34 @@ if (loveMeter) {
     loveMeter.addEventListener('input', () => {
         const value = parseInt(loveMeter.value);
         if (loveValue) loveValue.textContent = value;
-        if (value > 100 && extraLove) {
-            extraLove.classList.remove('hidden');
-            extraLove.textContent = value >= 5000 ? config.loveMessages.extreme : (value > 1000 ? config.loveMessages.high : config.loveMessages.normal);
-        } else if (extraLove) {
-            extraLove.classList.add('hidden');
+        
+        if (value > 100) {
+            if (extraLove) {
+                extraLove.classList.remove('hidden');
+                // Выбираем сообщение из конфига
+                extraLove.textContent = value >= 5000 ? config.loveMessages.extreme : (value > 1000 ? config.loveMessages.high : config.loveMessages.normal);
+            }
+
+            // --- ВОТ ТУТ МАГИЯ ВЫХОДА ЗА РАМКИ ---
+            // Считаем, насколько полоска должна стать шире экрана
+            const overflowPercentage = (value - 100) / 9900; 
+            const extraWidth = overflowPercentage * window.innerWidth * 0.8;
+            
+            // Применяем расширение
+            loveMeter.style.width = `calc(100% + ${extraWidth}px)`;
+            loveMeter.style.transition = 'width 0.3s';
+            // --------------------------------------
+
+            if (value >= 5000 && extraLove) {
+                extraLove.classList.add('super-love');
+            }
+        } else {
+            if (extraLove) {
+                extraLove.classList.add('hidden');
+                extraLove.classList.remove('super-love');
+            }
+            // Возвращаем в границы таблички, если значение <= 100
+            loveMeter.style.width = '100%';
         }
     });
 }
