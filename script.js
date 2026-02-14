@@ -91,7 +91,7 @@ function createFloatingElements() {
     
     // Ссылки на фото Stray Kids (замени их на реальные ссылки на PNG/JPG)
     const skzPhotos = [
-        'https://i.pinimg.com/originals/de/81/25/de8125866b8b08709e9921e537651086.png', // Пример Феликс
+        'https://i.pinimg.com/1200x/7a/d9/cd/7ad9cd7280ad536d26d4a8007cfb4f42.jpg', // Пример Феликс
         'https://i.pinimg.com/originals/6d/4e/6a/6d4e6a00508b5f3a5f97b6671048039d.png', // Пример Хёнджин
         'https://i.pinimg.com/originals/5c/7e/63/5c7e634e004683058867a91673855598.png'  // Пример Бан Чан
     ];
